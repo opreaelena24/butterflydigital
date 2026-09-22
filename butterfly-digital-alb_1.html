@@ -1,0 +1,643 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<meta name="description" content="Butterfly Digital: creare website-uri, SEO și publicitate online.">
+<title>Butterfly Digital</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600&family=Sora:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  color-scheme:dark;
+  --bg:#08080D;
+  --bg2:#14141C;
+  --glass:rgba(255,255,255,.04);
+  --glass-hi:rgba(255,255,255,.08);
+  --line:rgba(255,255,255,.12);
+  --ink:#F3EEFF;
+  --muted:#A9A8BA;
+  --lilac:#C4A1FF;
+  --violet:#8B5CFF;
+  --pink:#FF9AE0;
+  --cyan:#7BE7F5;
+  --grad:linear-gradient(100deg,#C4A1FF 0%,#FF9AE0 55%,#7BE7F5 100%);
+  --display:"Unbounded","Helvetica Neue",Arial,sans-serif;
+  --sans:"Sora","Helvetica Neue",Arial,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16.5px;line-height:1.7;padding-inline:24px;position:relative;overflow-x:hidden}
+:root:not([data-lang="en"]) .en{display:none}
+:root[data-lang="en"] .ro{display:none}
+.wrap{max-width:1120px;margin-inline:auto;position:relative}
+a{color:inherit}
+p{margin:0}
+h1,h2,h3{margin:0;text-wrap:balance}
+h1,h2{font-family:var(--display);font-weight:500;letter-spacing:-0.03em;line-height:1.14}
+h3{font-family:var(--sans);font-weight:600;letter-spacing:-0.01em;line-height:1.25}
+.mono{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--lilac)}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+
+/* ---------- butterflies ---------- */
+.bf{--c1:#C4A1FF;--c2:#8B5CFF;--cb:#F3EEFF;display:inline-block;width:1em;height:.8em;pointer-events:none}
+.bf.pink{--c1:#FF9AE0;--c2:#C56BFF}
+.bf.cyan{--c1:#7BE7F5;--c2:#8B5CFF}
+.bfs{width:100%;height:100%;display:block;overflow:visible;filter:drop-shadow(0 0 6px rgba(196,161,255,.55))}
+.bfs .u{fill:var(--c1)}
+.bfs .l{fill:var(--c2)}
+.bfs .s{fill:#fff;opacity:.55}
+.bfs .b{fill:var(--cb)}
+.bfs .a{fill:none;stroke:var(--cb);stroke-width:.9;stroke-linecap:round}
+.bfs .w{transform-box:fill-box;transform-origin:center;animation:flap var(--fs,.62s) ease-in-out infinite;animation-delay:var(--fd,0s)}
+@keyframes flap{0%,30%{transform:scaleX(1)}55%{transform:scaleX(.28)}80%,100%{transform:scaleX(1)}}
+.bf.tag{width:.78em;height:.62em;vertical-align:.5em;margin-left:.3em;transform:rotate(-14deg)}
+.bf.perch{position:absolute;right:-.8em;top:.02em;width:.66em;height:.53em;transform:rotate(14deg)}
+.sky{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.fly{position:absolute;left:0;top:var(--top);width:var(--sz);height:calc(var(--sz)*.8);opacity:.9;animation:glide var(--dur) linear infinite;animation-delay:var(--del)}
+@keyframes glide{
+  0%{transform:translate(-10vw,20px) rotate(10deg)}
+  25%{transform:translate(22vw,-34px) rotate(-8deg)}
+  50%{transform:translate(52vw,26px) rotate(12deg)}
+  75%{transform:translate(80vw,-28px) rotate(-10deg)}
+  100%{transform:translate(112vw,14px) rotate(8deg)}
+}
+
+/* ---------- header ---------- */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;margin-inline:-24px;padding-inline:24px;background:linear-gradient(90deg,rgba(84,44,170,.78),rgba(52,26,110,.78));backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(196,161,255,.5);box-shadow:0 10px 36px -14px rgba(139,92,255,.75)}
+.top .wrap{display:flex;align-items:center;gap:20px;padding-block:10px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--display);font-weight:500;font-size:1.05rem;letter-spacing:-0.02em;padding-block:6px}
+.logo b{font-weight:500;color:#fff}
+nav{margin-left:auto;display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+nav a.l{text-decoration:none;font-size:.88rem;color:#D9CCF5;transition:color .15s}
+nav a.l:hover{color:var(--ink)}
+.lang{display:flex;gap:2px;font-family:var(--mono);font-size:.72rem}
+.lang button{font:inherit;background:none;border:0;color:#C9B8EE;padding:4px 6px;cursor:pointer;letter-spacing:.08em}
+:root:not([data-lang="en"]) .lang [data-set="ro"],:root[data-lang="en"] .lang [data-set="en"]{color:var(--ink);text-decoration:underline;text-underline-offset:5px;text-decoration-color:var(--pink);text-decoration-thickness:2px}
+
+.btn{display:inline-flex;align-items:center;gap:10px;font:inherit;font-size:.92rem;font-weight:500;text-decoration:none;cursor:pointer;color:#12082B;background:var(--grad);border:0;border-radius:999px;padding:13px 24px;box-shadow:0 0 0 1px rgba(255,255,255,.25) inset,0 8px 30px -8px rgba(196,161,255,.7);transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 0 0 1px rgba(255,255,255,.35) inset,0 12px 36px -6px rgba(255,154,224,.7)}
+.btn.ghost{background:var(--glass);color:var(--ink);box-shadow:0 0 0 1px var(--line) inset}
+.btn.ghost:hover{background:var(--glass-hi);box-shadow:0 0 0 1px var(--lilac) inset}
+.btn.sm{padding:9px 18px;font-size:.84rem}
+
+@media (max-width:760px){nav a.l{display:none}nav{gap:14px}}
+
+/* ---------- hero ---------- */
+.hero{position:relative;padding-block:84px 96px;overflow-x:clip}
+.hero .grid{display:grid;gap:48px;grid-template-columns:1fr;align-items:center;position:relative;z-index:1}
+@media (min-width:940px){.hero .grid{grid-template-columns:1.25fr .75fr}}
+.hero .mono{display:inline-flex;align-items:center;gap:10px;padding:6px 14px;border:1px solid var(--line);border-radius:999px;background:var(--glass)}
+.hero .mono::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 10px var(--cyan)}
+.hero h1{font-size:clamp(1.9rem,4.9vw,3.7rem);margin-top:26px;max-width:14em}
+.hero h1 em{font-style:normal;position:relative;display:inline-block;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero h1 em .bf{-webkit-text-fill-color:initial}
+.hero .lead{margin-top:26px;max-width:33em;color:var(--muted);font-size:1.05rem}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
+
+.stage{position:relative;aspect-ratio:1;width:min(100%,400px);margin-inline:auto}
+.stage .ring{position:absolute;inset:6%;border-radius:50%;border:1px dashed rgba(196,161,255,.4);animation:spin 60s linear infinite}
+.stage .ring.two{inset:22%;border-style:solid;border-color:rgba(196,161,255,.32);animation-direction:reverse;animation-duration:90s}
+.stage .glow{position:absolute;inset:6%;border-radius:50%;background:radial-gradient(circle,rgba(139,92,255,.6) 0%,rgba(139,92,255,.22) 45%,transparent 70%);filter:blur(18px)}
+.stage .mark{position:absolute;inset:20% 13% 22%;display:grid;place-items:center}
+.stage .mark svg{width:100%;height:100%;overflow:visible;filter:drop-shadow(0 0 22px rgba(196,161,255,.5))}
+.orbiter{position:absolute;inset:6%;z-index:3;pointer-events:none;animation:spin 18s linear infinite}
+.orbiter .bf{position:absolute;left:50%;top:0;width:34px;height:27px;margin:-14px 0 0 -17px;transform:rotate(90deg)}
+.chip{position:absolute;z-index:2;font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:rgba(14,14,22,.85);backdrop-filter:blur(6px);color:var(--ink);animation:bob 5s ease-in-out infinite;animation-delay:var(--d,0s)}
+.chip::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;margin-right:8px;background:var(--c,var(--lilac));box-shadow:0 0 8px var(--c,var(--lilac))}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ---------- sections ---------- */
+section{padding-block:84px;position:relative}
+.head{display:grid;gap:14px;grid-template-columns:1fr;margin-bottom:44px}
+@media (min-width:860px){.head{grid-template-columns:230px 1fr;gap:40px}}
+.head h2{font-size:clamp(1.35rem,2.9vw,2.1rem);max-width:21em}
+.head .mono{padding-top:10px}
+
+/* services */
+.svc{display:grid;gap:20px;grid-template-columns:1fr}
+@media (min-width:920px){.svc{grid-template-columns:repeat(3,1fr)}}
+.card{position:relative;display:flex;flex-direction:column;gap:14px;padding:28px;border-radius:22px;border:1px solid var(--line);background:linear-gradient(160deg,var(--glass-hi),var(--glass));backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:transform .2s,border-color .2s,box-shadow .2s}
+.card::before{content:"";position:absolute;left:24px;right:24px;top:-1px;height:2px;background:var(--grad);border-radius:2px;opacity:.85}
+.card:hover{transform:translateY(-4px);border-color:rgba(196,161,255,.55);box-shadow:0 18px 50px -20px rgba(139,92,255,.6)}
+.card h3{font-size:1.4rem}
+.card .tagline{color:var(--muted);font-size:.95rem}
+.card ul{margin:6px 0 0;padding:0;list-style:none;display:grid;gap:10px}
+.card li{position:relative;padding-left:22px;font-size:.93rem}
+.card li::before{content:"";position:absolute;left:0;top:.62em;width:8px;height:8px;border-radius:50%;background:var(--lilac);box-shadow:0 0 10px var(--lilac)}
+.card .note{margin-top:auto;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:.86rem}
+
+/* extras */
+.extras{border:1px solid var(--line);border-radius:22px;background:var(--glass);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);overflow:hidden}
+.ex{display:grid;gap:8px 40px;padding:24px 28px;border-top:1px solid var(--line);grid-template-columns:1fr}
+.ex:first-child{border-top:0}
+@media (min-width:860px){.ex{grid-template-columns:290px 1fr;align-items:baseline}}
+@media (max-width:560px){.ex{padding:20px}}
+.ex h3{font-size:1.05rem;display:flex;gap:12px;align-items:center}
+.ex h3::before{content:"";flex:none;width:8px;height:8px;border-radius:50%;background:var(--lilac);box-shadow:0 0 10px var(--lilac)}
+.ex p{color:var(--muted);font-size:.95rem}
+
+/* process */
+ol.steps{margin:0;padding:0;list-style:none;display:grid;gap:26px;grid-template-columns:1fr;position:relative}
+@media (min-width:880px){ol.steps{grid-template-columns:repeat(4,1fr);gap:24px}
+  ol.steps::before{content:"";position:absolute;left:18px;right:18px;top:17px;height:1px;background:linear-gradient(90deg,var(--lilac),var(--pink),var(--cyan));opacity:.6}}
+.steps li{position:relative}
+.steps .n{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--bg2);border:1px solid var(--lilac);font-family:var(--mono);font-size:.74rem;color:var(--ink);box-shadow:0 0 16px rgba(196,161,255,.5);position:relative;z-index:1}
+.steps h3{font-size:1.08rem;margin:16px 0 6px}
+.steps p{color:var(--muted);font-size:.92rem}
+
+/* work */
+.work{display:grid;gap:22px;grid-template-columns:1fr}
+@media (min-width:760px){.work{grid-template-columns:repeat(3,1fr)}}
+.work figure{margin:0}
+.shot{aspect-ratio:4/3;max-width:100%;border-radius:18px;border:1px dashed rgba(196,161,255,.45);background:var(--glass);display:grid;place-items:center;text-align:center;padding:16px}
+.shot .mono{color:var(--muted)}
+.work figcaption{margin-top:14px;display:flex;justify-content:space-between;gap:12px;align-items:baseline;flex-wrap:wrap}
+.work .nm{font-weight:600}
+.work figcaption .mono{color:var(--muted)}
+
+/* principles */
+.pr{display:grid;gap:22px;grid-template-columns:1fr}
+@media (min-width:760px){.pr{grid-template-columns:repeat(3,1fr)}}
+.pr div{padding:24px;border-radius:18px;border:1px solid var(--line);background:var(--glass)}
+.pr h3{font-size:1.05rem;margin-bottom:8px}
+.pr p{color:var(--muted);font-size:.92rem}
+
+/* faq */
+.faq{display:grid;gap:12px}
+.faq details{border:1px solid var(--line);border-radius:16px;background:var(--glass);transition:border-color .2s,background .2s}
+.faq details[open]{background:var(--glass-hi);border-color:rgba(196,161,255,.5)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:18px 22px;font-weight:500;font-size:1rem}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:var(--mono);font-size:1.25rem;color:var(--pink);flex:none;transition:transform .2s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{color:var(--muted);padding:0 22px 20px;max-width:46em;font-size:.94rem}
+
+/* contact */
+.panel{border:1px solid var(--line);border-radius:28px;padding:36px;background:linear-gradient(160deg,var(--glass-hi),var(--glass))}
+@media (max-width:560px){.panel{padding:22px}}
+.cgrid{display:grid;gap:36px;grid-template-columns:1fr}
+@media (min-width:900px){.cgrid{grid-template-columns:.85fr 1.15fr;gap:48px}}
+.cgrid h2{font-size:clamp(1.4rem,3vw,2.2rem);margin-top:16px}
+.cgrid .sub{color:var(--muted);margin-top:14px;font-size:.95rem}
+.quick{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+form{display:grid;gap:18px}
+label{display:grid;gap:8px;font-size:.8rem;font-weight:500;color:var(--muted)}
+input,select,textarea{font:inherit;font-size:.98rem;font-weight:400;color:var(--ink);background:rgba(0,0,0,.45);border:1px solid var(--line);border-radius:12px;padding:12px 14px;width:100%}
+input::placeholder,textarea::placeholder{color:#7d739c}
+select option{background:#14141C;color:#F3F1FA}
+input:hover,select:hover,textarea:hover{border-color:rgba(196,161,255,.5)}
+input:focus,select:focus,textarea:focus{border-color:var(--cyan);outline:none;box-shadow:0 0 0 3px rgba(123,231,245,.18)}
+textarea{min-height:120px;resize:vertical}
+.two{display:grid;gap:18px;grid-template-columns:1fr}
+@media (min-width:560px){.two{grid-template-columns:1fr 1fr}}
+.fnote{color:var(--muted);font-size:.82rem}
+
+/* dock */
+.dock{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:40;display:flex;gap:8px}
+.dock a{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-size:.84rem;font-weight:500;padding:11px 16px;border-radius:999px;border:1px solid var(--line);background:rgba(14,14,22,.88);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:var(--ink);box-shadow:0 8px 24px rgba(0,0,0,.4)}
+.dock a.wa{background:var(--grad);border-color:transparent;color:#12082B}
+.dock a:hover{transform:translateY(-2px)}
+.dock svg{width:16px;height:16px;fill:currentColor;flex:none}
+@media (max-width:520px){.dock a .t{display:none}.dock a{padding:13px}.dock svg{width:20px;height:20px}}
+
+footer{border-top:1px solid var(--line);padding-block:32px 100px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:10px 28px;justify-content:space-between;align-items:center;color:var(--muted);font-size:.85rem}
+footer b{font-family:var(--display);font-weight:500;color:var(--ink);font-size:.9rem}
+
+/* ---------- logo animation ---------- */
+.lg-wings{transform-box:fill-box;transform-origin:center;animation:flaplogo .75s ease-in-out infinite}
+@keyframes flaplogo{0%,30%{transform:scaleX(1)}55%{transform:scaleX(.5)}80%,100%{transform:scaleX(1)}}
+.lg-line{transform-box:fill-box;transform-origin:left center;animation:typeline 3.6s ease-in-out infinite}
+.lg-line.b{animation-delay:.5s}.lg-line.c{animation-delay:1s}
+.lg-cur{animation:blink .8s steps(1) infinite}
+.lg-hand{animation:tap .32s ease-in-out infinite}
+.lg-hand.r{animation-delay:.16s}
+@keyframes typeline{0%{transform:scaleX(0)}45%,90%{transform:scaleX(1)}100%{transform:scaleX(0)}}
+@keyframes blink{50%{opacity:0}}
+@keyframes tap{0%,100%{transform:translateY(0)}50%{transform:translateY(-1.8px)}}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .sky{display:none}
+}
+
+/* ===== white version ===== */
+:root{color-scheme:light;--bg:#FFFFFF;--bg2:#FFFFFF;--glass:rgba(40,20,110,.035);--glass-hi:rgba(40,20,110,.06);--line:rgba(40,20,110,.14);--ink:#16112E;--muted:#5C5878;--lilac:#7C4DFF;--violet:#7C4DFF;--pink:#D946A8;--cyan:#0EA5C6;--grad:linear-gradient(100deg,#7C4DFF 0%,#D946A8 60%,#0EA5C6 100%)}
+body{background:#FFFFFF}
+.btn{color:#fff;box-shadow:0 8px 24px -8px rgba(124,77,255,.6)}
+.btn:hover{box-shadow:0 12px 30px -6px rgba(217,70,168,.55)}
+.btn.ghost{background:#fff;color:var(--ink);box-shadow:0 0 0 1px var(--line) inset}
+.btn.ghost:hover{background:#fff;box-shadow:0 0 0 1px var(--lilac) inset}
+.top .btn{background:#fff;color:#4B2BA8;box-shadow:none}
+.top .btn:hover{background:#F1E9FF}
+.hero .mono{background:#fff}
+.card{background:#fff;box-shadow:0 12px 32px -20px rgba(60,30,150,.4);-webkit-backdrop-filter:none;backdrop-filter:none}
+.card:hover{box-shadow:0 22px 46px -22px rgba(124,77,255,.55)}
+.extras,.pr div,.faq details,.shot{background:#fff;-webkit-backdrop-filter:none;backdrop-filter:none}
+.faq details[open]{background:#FAF7FF}
+.panel{background:linear-gradient(160deg,#F5F0FF,#FFFFFF)}
+.steps .n{background:#fff;color:var(--ink);box-shadow:0 0 14px rgba(124,77,255,.35)}
+.chip{background:#fff;color:var(--ink);box-shadow:0 8px 20px -10px rgba(60,30,150,.45);-webkit-backdrop-filter:none;backdrop-filter:none}
+.dock a{background:rgba(255,255,255,.94);color:var(--ink);box-shadow:0 10px 26px rgba(60,30,150,.28)}
+.dock a.wa{background:var(--grad);color:#fff}
+input,select,textarea{background:#fff;color:var(--ink)}
+input::placeholder,textarea::placeholder{color:#9A97B0}
+select option{background:#fff;color:var(--ink)}
+.faq summary::after{color:var(--violet)}
+.stage .glow{background:radial-gradient(circle,rgba(124,77,255,.34) 0%,rgba(124,77,255,.12) 45%,transparent 70%)}
+.stage .ring{border-color:rgba(124,77,255,.45)}
+.stage .ring.two{border-color:rgba(124,77,255,.3)}
+.stage .mark svg{filter:drop-shadow(0 12px 22px rgba(124,77,255,.4))}
+.stage .mark svg [stroke]{stroke:#7C4DFF}
+.bf{--cb:#4B2BA8}
+.bfs{filter:drop-shadow(0 0 4px rgba(124,77,255,.35))}
+.top{background:linear-gradient(90deg,#5B2FC7,#3E1E96);border-bottom:1px solid rgba(255,255,255,.18);box-shadow:0 12px 32px -16px rgba(91,47,199,.7);-webkit-backdrop-filter:none;backdrop-filter:none}
+:root:not([data-lang="en"]) .lang [data-set="ro"],:root[data-lang="en"] .lang [data-set="en"]{color:#fff}
+nav a.l:hover{color:#fff}
+
+/* projects */
+.projects{display:grid;gap:24px;grid-template-columns:1fr}
+@media (min-width:900px){.projects{grid-template-columns:repeat(3,1fr)}}
+.proj{display:flex;flex-direction:column;text-decoration:none;color:inherit;border:1px solid var(--line);border-radius:20px;overflow:hidden;background:var(--bg2);transition:transform .2s,box-shadow .2s,border-color .2s}
+.proj:hover{transform:translateY(-4px);border-color:var(--lilac);box-shadow:0 22px 46px -22px rgba(124,77,255,.6)}
+.mbar{display:flex;align-items:center;gap:6px;padding:10px 14px;border-bottom:1px solid var(--line);background:var(--glass-hi)}
+.mbar i{width:9px;height:9px;border-radius:50%;background:var(--line);flex:none}
+.mbar span{margin-left:8px;font-family:var(--mono);font-size:.68rem;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mbody{aspect-ratio:16/10;display:grid;place-content:center;text-align:center;gap:6px;padding:16px}
+.mbody b{font-family:var(--display);font-weight:500;font-size:clamp(1.5rem,3.2vw,2.2rem);letter-spacing:-0.02em}
+.mbody small{font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;opacity:.85}
+.mbody.cgr{background:#0A2A4D;color:#fff}
+.mbody.agr{background:linear-gradient(160deg,#FFFFFF,#E4EEFF);color:#1F5FBF}
+.mbody.bnl{background:linear-gradient(160deg,#FFFFFF,#FBEFF4);color:#2A2230}
+.pinfo{padding:20px 22px 22px;display:flex;flex-direction:column;gap:8px;flex:1}
+.pinfo h3{font-size:1.08rem}
+.pinfo .d{color:var(--muted);font-size:.92rem}
+.pinfo .visit{margin-top:auto;padding-top:10px;font-weight:600;font-size:.9rem;color:var(--violet)}
+.pnote{margin-top:20px;color:var(--muted);font-size:.85rem}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#top" id="top" aria-label="Butterfly Digital"><b>Butterfly Digital</b></a>
+    <nav>
+      <a class="l" href="#servicii"><span class="ro">Servicii</span><span class="en">Services</span></a>
+      <a class="l" href="#proces"><span class="ro">Proces</span><span class="en">Process</span></a>
+      <a class="l" href="#portofoliu"><span class="ro">Portofoliu</span><span class="en">Work</span></a>
+      <a class="l" href="#faq"><span class="ro">Întrebări</span><span class="en">FAQ</span></a>
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" data-set="ro" aria-label="Română">RO</button>
+        <button type="button" data-set="en" aria-label="English">EN</button>
+      </div>
+      <a class="btn sm" href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="hero">
+  <div class="wrap">
+    <div class="grid">
+      <div>
+        <p class="mono"><span class="ro">Website · SEO · Publicitate online</span><span class="en">Websites · SEO · Online advertising</span></p>
+        <h1>
+          <span class="ro">Site-uri și campanii pentru afaceri care vor să fie <em>găsite</em>.</span>
+          <span class="en">Websites and campaigns for businesses that want to be <em>found</em>.</span>
+        </h1>
+        <p class="lead">
+          <span class="ro">Construiesc site-uri, le optimizez pentru Google și gestionez publicitatea online. Un singur partener pentru toată prezența ta digitală.</span>
+          <span class="en">I build websites, optimise them for Google and manage online advertising. One partner for your entire digital presence.</span>
+        </p>
+        <div class="cta">
+          <a class="btn" href="#contact"><span class="ro">Cere o ofertă</span><span class="en">Request a quote</span> →</a>
+          <a class="btn ghost" href="#servicii"><span class="ro">Serviciile mele</span><span class="en">My services</span></a>
+        </div>
+      </div>
+      <div class="stage" id="stage" aria-hidden="true">
+        <div class="glow"></div>
+        <div class="ring"></div>
+        <div class="ring two"></div>
+        <div class="mark"><svg viewBox="10 25 44 23" role="img" aria-hidden="true">
+        <rect x="21" y="27" width="22" height="13" rx="2" fill="#150E29" stroke="#E4D3FF" stroke-width="1.5"/>
+        <rect class="lg-line" x="24" y="30" width="9" height="1.6" rx=".8" fill="#C4A1FF"/>
+        <rect class="lg-line b" x="24" y="33.2" width="13" height="1.6" rx=".8" fill="#FF9AE0"/>
+        <rect class="lg-line c" x="24" y="36.4" width="7" height="1.6" rx=".8" fill="#7BE7F5"/>
+        <rect class="lg-cur" x="38.4" y="36.3" width="1.6" height="2" fill="#F3EEFF"/>
+        <path d="M15 41h34l3 5H12z" fill="#7C4DFF" stroke="#E4D3FF" stroke-width="1" stroke-linejoin="round"/>
+        <ellipse class="lg-hand" cx="28" cy="39.8" rx="2.4" ry="1.5" fill="#F3EEFF"/>
+        <ellipse class="lg-hand r" cx="36" cy="39.8" rx="2.4" ry="1.5" fill="#F3EEFF"/>
+      </svg></div>
+        <span class="chip" style="top:8%;left:0;--c:#C4A1FF;--d:0s">WEBSITE</span>
+        <span class="chip" style="top:20%;right:0;--c:#FF9AE0;--d:-1.6s">SEO</span>
+        <span class="chip" style="bottom:12%;left:4%;--c:#7BE7F5;--d:-3.2s">ADS</span>
+        <div class="orbiter"><span class="bf"></span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section id="servicii">
+  <div class="wrap">
+    <div class="head">
+      <p class="mono"><span class="ro">Servicii</span><span class="en">Services</span></p>
+      <h2><span class="ro">Trei servicii care funcționează cel mai bine împreună.</span><span class="en">Three services that work best together.</span></h2>
+    </div>
+    <div class="svc">
+      <article class="card">
+        <h3><span class="ro">Creare website</span><span class="en">Website design</span></h3>
+        <p class="tagline"><span class="ro">Vitrina ta online.</span><span class="en">Your online shop window.</span></p>
+        <ul>
+          <li><span class="ro">Site de prezentare sau magazin online</span><span class="en">Company site or online shop</span></li>
+          <li><span class="ro">Design responsive, rapid pe telefon</span><span class="en">Responsive design, fast on mobile</span></li>
+          <li><span class="ro">Formulare de contact și Google Analytics</span><span class="en">Contact forms and Google Analytics</span></li>
+          <li><span class="ro">Ajutor cu alegerea găzduirii și a domeniului</span><span class="en">Help choosing hosting and a domain</span></li>
+        </ul>
+      </article>
+      <article class="card">
+        <h3>SEO</h3>
+        <p class="tagline"><span class="ro">Să te găsească cei care te caută.</span><span class="en">Be found by people already searching.</span></p>
+        <ul>
+          <li><span class="ro">Audit tehnic și cercetarea cuvintelor cheie</span><span class="en">Technical audit and keyword research</span></li>
+          <li><span class="ro">Optimizarea paginilor și a conținutului</span><span class="en">On-page and content optimisation</span></li>
+          <li><span class="ro">SEO local și Google Business Profile</span><span class="en">Local SEO and Google Business Profile</span></li>
+          <li><span class="ro">Raport lunar clar</span><span class="en">Clear monthly reporting</span></li>
+        </ul>
+        <p class="note"><span class="ro">Rezultatele apar în luni, nu în zile, și rămân după ce oprești bugetul.</span><span class="en">Results take months, not days, and last after the budget stops.</span></p>
+      </article>
+      <article class="card">
+        <h3><span class="ro">Publicitate online</span><span class="en">Online advertising</span></h3>
+        <p class="tagline"><span class="ro">Clienți noi, mai repede.</span><span class="en">New customers, faster.</span></p>
+        <ul>
+          <li><span class="ro">Campanii Google Ads și Meta</span><span class="en">Google Ads and Meta campaigns</span></li>
+          <li><span class="ro">Pagini de destinație pentru conversie</span><span class="en">Landing pages built to convert</span></li>
+          <li><span class="ro">Urmărirea conversiilor</span><span class="en">Conversion tracking</span></li>
+          <li><span class="ro">Optimizare continuă pe baza rezultatelor</span><span class="en">Ongoing optimisation based on results</span></li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="extra">
+  <div class="wrap">
+    <div class="head">
+      <p class="mono"><span class="ro">Servicii suplimentare</span><span class="en">Extra services</span></p>
+      <h2><span class="ro">Ca site-ul să continue să aducă clienți.</span><span class="en">So your site keeps bringing in customers.</span></h2>
+    </div>
+    <div class="extras">
+      <div class="ex">
+        <h3><span class="ro">Mentenanță și ajutor cu găzduirea</span><span class="en">Maintenance and hosting help</span></h3>
+        <p><span class="ro">Actualizări, copii de siguranță, verificarea vitezei și a securității. Te ajut să alegi și să configurezi găzduirea și domeniul la un furnizor.</span><span class="en">Updates, backups, speed and security checks. I help you choose and set up hosting and your domain with a provider.</span></p>
+      </div>
+      <div class="ex">
+        <h3><span class="ro">Conținut și articole de blog</span><span class="en">Content and blog articles</span></h3>
+        <p><span class="ro">Articole și pagini noi, scrise pentru ce caută clienții tăi pe Google. SEO-ul are nevoie de conținut proaspăt ca să crească.</span><span class="en">New articles and pages written around what your customers search for on Google. SEO needs fresh content to keep growing.</span></p>
+      </div>
+      <div class="ex">
+        <h3>Email marketing</h3>
+        <p><span class="ro">Newslettere și mesaje automate (bun venit, coș abandonat, reamintiri) care păstrează legătura cu clienții existenți.</span><span class="en">Newsletters and automated emails (welcome, abandoned cart, reminders) that keep you in touch with existing customers.</span></p>
+      </div>
+      <div class="ex">
+        <h3><span class="ro">Analiză și rapoarte</span><span class="en">Analytics and reporting</span></h3>
+        <p><span class="ro">Configurare Google Analytics, urmărirea conversiilor și un raport lunar clar, ca să vezi ce aduce cereri și ce nu.</span><span class="en">Google Analytics set-up, conversion tracking and a clear monthly report, so you see what brings enquiries and what does not.</span></p>
+      </div>
+      <div class="ex">
+        <h3><span class="ro">Google Business Profile și recenzii</span><span class="en">Google Business Profile and reviews</span></h3>
+        <p><span class="ro">Pentru afaceri locale (cabinete, restaurante, saloane): profil complet, actualizări, poze și ajutor cu răspunsurile la recenzii.</span><span class="en">For local businesses (clinics, restaurants, salons): a complete profile, updates, photos and help replying to reviews.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="proces">
+  <div class="wrap">
+    <div class="head">
+      <p class="mono"><span class="ro">Proces</span><span class="en">Process</span></p>
+      <h2><span class="ro">Patru pași, fără surprize.</span><span class="en">Four steps, no surprises.</span></h2>
+    </div>
+    <ol class="steps">
+      <li><span class="n">01</span><h3><span class="ro">Discuție</span><span class="en">Discovery</span></h3><p><span class="ro">Aflu ce vinzi, cui și ce vrei să obții. Fără cost.</span><span class="en">I learn what you sell, to whom, and what you want to achieve. Free of charge.</span></p></li>
+      <li><span class="n">02</span><h3><span class="ro">Plan și ofertă</span><span class="en">Plan and quote</span></h3><p><span class="ro">Un plan clar și un preț fix, în scris.</span><span class="en">A clear plan and a fixed price, in writing.</span></p></li>
+      <li><span class="n">03</span><h3><span class="ro">Realizare</span><span class="en">Build</span></h3><p><span class="ro">Construiesc și testez, iar tu vezi etapele pe parcurs.</span><span class="en">I build and test, and you see progress along the way.</span></p></li>
+      <li><span class="n">04</span><h3><span class="ro">Lansare și optimizare</span><span class="en">Launch and optimise</span></h3><p><span class="ro">Publicăm, măsurăm și îmbunătățim pe baza cifrelor.</span><span class="en">We go live, measure, and improve based on the numbers.</span></p></li>
+    </ol>
+  </div>
+</section>
+
+<section id="portofoliu">
+  <div class="wrap">
+    <div class="head">
+      <p class="mono"><span class="ro">Portofoliu</span><span class="en">Selected work</span></p>
+      <h2><span class="ro">Proiecte recente.</span><span class="en">Recent projects.</span></h2>
+    </div>
+    <div class="projects">
+      <a class="proj" href="https://cgrjoineryconstruction.co.uk" target="_blank" rel="noopener">
+        <div><div class="mbar"><i></i><i></i><i></i><span>cgrjoineryconstruction.co.uk</span></div>
+        <div class="mbody cgr"><b>CGR</b><small>Joinery &amp; Construction</small></div></div>
+        <div class="pinfo">
+          <h3>CGR Joinery &amp; Construction Ltd</h3>
+          <p class="mono">Landing page</p>
+          <p class="d"><span class="ro">Pagină de prezentare pentru o firmă de tâmplărie și construcții din Marea Britanie: extinderi, bucătării, băi și renovări complete, cu contact rapid prin telefon, WhatsApp și Instagram.</span><span class="en">A landing page for a UK joinery and construction company: extensions, kitchens, bathrooms and full home renovations, with quick contact by phone, WhatsApp and Instagram.</span></p>
+          <span class="visit"><span class="ro">Vezi site-ul</span><span class="en">Visit site</span> ↗</span>
+        </div>
+      </a>
+      <a class="proj" href="https://agrinstale-website.netlify.app" target="_blank" rel="noopener">
+        <div><div class="mbar"><i></i><i></i><i></i><span>agrinstale-website.netlify.app</span></div>
+        <div class="mbody agr"><b>AGRINSTALe</b><small>Instalații · Irigații</small></div></div>
+        <div class="pinfo">
+          <h3>AGRINSTALe</h3>
+          <p class="mono">Website</p>
+          <p class="d"><span class="ro">Site de prezentare în română pentru o firmă de instalații din București și Ilfov: sanitare, termice, aer condiționat, irigații și pompe de căldură.</span><span class="en">A Romanian-language company site for an installation firm in Bucharest and Ilfov: plumbing, heating, air conditioning, irrigation and heat pumps.</span></p>
+          <span class="visit"><span class="ro">Vezi site-ul</span><span class="en">Visit site</span> ↗</span>
+        </div>
+      </a>
+      <a class="proj" href="https://bnlbeauty-website.netlify.app" target="_blank" rel="noopener">
+        <div><div class="mbar"><i></i><i></i><i></i><span>bnlbeauty-website.netlify.app</span></div>
+        <div class="mbody bnl"><b>BNLbeauty ♡</b><small>Manichiură · Machiaj</small></div></div>
+        <div class="pinfo">
+          <h3>BNLbeauty</h3>
+          <p class="mono">Website</p>
+          <p class="d"><span class="ro">Site minimalist în română pentru servicii de manichiură cu gel și machiaj, cu galerie de lucrări și programare prin Instagram sau WhatsApp.</span><span class="en">A minimal Romanian-language site for gel manicure and makeup services, with a work gallery and booking through Instagram or WhatsApp.</span></p>
+          <span class="visit"><span class="ro">Vezi site-ul</span><span class="en">Visit site</span> ↗</span>
+        </div>
+      </a>
+    </div>
+    <p class="pnote"><span class="ro">Previzualizările de mai sus sunt ilustrative. Apasă pe un proiect ca să vezi site-ul real.</span><span class="en">The previews above are illustrative. Click a project to see the live site.</span></p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="head">
+      <p class="mono"><span class="ro">Principii</span><span class="en">Principles</span></p>
+      <h2><span class="ro">Cum lucrez cu clienții.</span><span class="en">How I work with clients.</span></h2>
+    </div>
+    <div class="pr">
+      <div><h3><span class="ro">Prețuri clare</span><span class="en">Transparent pricing</span></h3><p><span class="ro">Știi de la început ce primești și cât costă. Fără costuri ascunse.</span><span class="en">You know from the start what you get and what it costs. No hidden fees.</span></p></div>
+      <div><h3><span class="ro">Vorbești direct cu mine</span><span class="en">You talk to me directly</span></h3><p><span class="ro">Lucrez personal la proiectul tău, fără intermediari. Răspund în cel mult o zi lucrătoare.</span><span class="en">I work on your project personally, with no middlemen. I reply within one working day.</span></p></div>
+      <div><h3><span class="ro">Cifre, nu promisiuni</span><span class="en">Numbers, not promises</span></h3><p><span class="ro">Nimeni nu poate garanta locul 1 pe Google. Îți arăt ce măsurăm și ce se întâmplă cu adevărat.</span><span class="en">Nobody can guarantee the #1 spot on Google. I show you what we measure and what really happens.</span></p></div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="head">
+      <p class="mono"><span class="ro">Întrebări frecvente</span><span class="en">FAQ</span></p>
+      <h2><span class="ro">Ce întreabă cei mai mulți clienți.</span><span class="en">What most clients ask.</span></h2>
+    </div>
+    <div class="faq">
+      <details open>
+        <summary><span class="ro">Cât durează realizarea unui site?</span><span class="en">How long does a website take?</span></summary>
+        <p><span class="ro">Depinde de complexitate. Un site de prezentare durează, de obicei, câteva săptămâni, iar un magazin online mai mult. Primești un calendar concret în ofertă, înainte să începem.</span><span class="en">It depends on complexity. A company site usually takes a few weeks, an online shop longer. You get a concrete timeline in the quote, before we start.</span></p>
+      </details>
+      <details>
+        <summary><span class="ro">Cât costă?</span><span class="en">How much does it cost?</span></summary>
+        <p><span class="ro">Fiecare proiect e diferit, așa că nu am o listă de prețuri unică. După o primă discuție gratuită îți trimit un preț fix, în scris, cu tot ce include.</span><span class="en">Every project is different, so there is no single price list. After a free first chat I send you a fixed price in writing, with everything it includes.</span></p>
+      </details>
+      <details>
+        <summary><span class="ro">În cât timp văd rezultate?</span><span class="en">How soon will I see results?</span></summary>
+        <p><span class="ro">Reclamele pot aduce cereri în zile sau săptămâni. SEO-ul cere mai multă răbdare: de obicei câteva luni, dar efectul rămâne și după ce oprești lucrul.</span><span class="en">Ads can bring enquiries within days or weeks. SEO takes more patience, usually a few months, but the effect lasts after the work stops.</span></p>
+      </details>
+      <details>
+        <summary><span class="ro">Garantezi locul 1 pe Google?</span><span class="en">Do you guarantee the #1 spot on Google?</span></summary>
+        <p><span class="ro">Nu, și oricine promite asta nu spune adevărul. Google decide clasamentul. Ce pot face este să îți îmbunătățesc site-ul, conținutul și prezența locală și să îți arăt lunar, cu cifre, ce s-a schimbat.</span><span class="en">No, and anyone who promises that is not being truthful. Google decides the rankings. What I can do is improve your site, content and local presence, and show you every month, with numbers, what changed.</span></p>
+      </details>
+      <details>
+        <summary><span class="ro">Bugetul de reclame e inclus în preț?</span><span class="en">Is the ad budget included in the price?</span></summary>
+        <p><span class="ro">Nu. Bugetul de reclame se plătește direct către Google sau Meta, iar munca mea e separată. Decizi tu cât cheltuiești și poți schimba oricând.</span><span class="en">No. The ad budget is paid directly to Google or Meta, and my work is separate. You decide how much to spend and can change it at any time.</span></p>
+      </details>
+      <details>
+        <summary><span class="ro">Mai lucrezi cu mine după lansare?</span><span class="en">Do you keep working with me after launch?</span></summary>
+        <p><span class="ro">Cum preferi. Fie continuăm lunar (optimizare, raport, campanii), fie îți predau totul, cu explicații, și te descurci singur.</span><span class="en">Whichever you prefer. We can continue monthly (optimisation, reporting, campaigns), or I hand everything over with instructions and you run it yourself.</span></p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="panel">
+      <div class="cgrid">
+        <div>
+          <p class="mono"><span class="ro">Contact</span><span class="en">Contact</span></p>
+          <h2><span class="ro">Hai să vorbim.</span><span class="en">Let’s talk.</span></h2>
+          <p class="sub"><span class="ro">Răspund în cel mult o zi lucrătoare. Dacă preferi, scrie-mi direct sau programează o discuție.</span><span class="en">I reply within one working day. If you prefer, message me directly or book a call.</span></p>
+          <div class="quick">
+            <a class="btn" data-wa href="#contact">WhatsApp</a>
+            <a class="btn ghost" data-book href="#contact"><span class="ro">Programează o discuție</span><span class="en">Book a call</span></a>
+          </div>
+        </div>
+        <form id="f" novalidate>
+          <div class="two">
+            <label for="fn"><span class="ro">Nume</span><span class="en">Name</span><input id="fn" type="text" autocomplete="name" required></label>
+            <label for="fe">Email<input id="fe" type="email" autocomplete="email" required></label>
+          </div>
+          <label for="fs"><span class="ro">Ce te interesează?</span><span class="en">What are you interested in?</span>
+            <select id="fs">
+              <option value="website">Website</option>
+              <option value="seo">SEO</option>
+              <option value="ads">Ads</option>
+              <option value="all" selected>Website + SEO + Ads</option>
+            </select>
+          </label>
+          <label for="fm"><span class="ro">Mesaj</span><span class="en">Message</span><textarea id="fm"></textarea></label>
+          <div><button class="btn" type="submit"><span class="ro">Trimite mesajul</span><span class="en">Send message</span> →</button></div>
+          <p class="fnote" id="fnote" role="status"><span class="ro">Se deschide aplicația ta de email cu mesajul completat.</span><span class="en">This opens your email app with the message filled in.</span></p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<div class="dock">
+  <a class="wa" data-wa href="#contact" aria-label="WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 3h16a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H9l-5 4v-4H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/></svg><span class="t">WhatsApp</span></a>
+  <a data-book href="#contact"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2V2h-2v2H9V2zM5 9h14v11H5z"/></svg><span class="t"><span class="ro">Programează</span><span class="en">Book a call</span></span></a>
+</div>
+
+<footer>
+  <div class="wrap">
+    <span><b>Butterfly Digital</b></span>
+    <span><span class="ro">Website-uri · SEO · Publicitate online</span><span class="en">Websites · SEO · Online advertising</span></span>
+    <span class="mono" style="color:var(--muted)">© 2026</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  /* Schimbă adresa de mai jos cu emailul unde vrei să primești mesajele */
+  var CONTACT_EMAIL = "hello@exemplu.ro";
+  /* Numărul de WhatsApp, cu prefix de țară, fără + sau spații (ex. 447700900123) */
+  var WHATSAPP_NUMBER = "";
+  /* Linkul tău de programare (Calendly, Cal.com etc.) */
+  var BOOKING_URL = "";
+
+  var root = document.documentElement;
+
+  /* ---- butterflies ---- */
+  var BF = '<svg class="bfs" viewBox="0 0 40 32" aria-hidden="true"><g class="w">'
+    + '<g><path class="u" d="M19 14C12 2 2 1 2 8c0 6 8 9 17 8z"/><path class="l" d="M19 17c-8 0-14 5-11 11 4 4 10-3 11-9z"/><circle class="s" cx="9" cy="8" r="1.7"/></g>'
+    + '<g transform="translate(40 0) scale(-1 1)"><path class="u" d="M19 14C12 2 2 1 2 8c0 6 8 9 17 8z"/><path class="l" d="M19 17c-8 0-14 5-11 11 4 4 10-3 11-9z"/><circle class="s" cx="9" cy="8" r="1.7"/></g>'
+    + '</g><ellipse class="b" cx="20" cy="16" rx="1.3" ry="7"/><path class="a" d="M20 9Q17 4 14 3M20 9Q23 4 26 3"/></svg>';
+  var n = 0;
+  function fill(el){
+    el.innerHTML = BF;
+    var w = el.querySelector(".w");
+    n++;
+    w.style.setProperty("--fs", (0.5 + (n % 5) * 0.07).toFixed(2) + "s");
+    w.style.setProperty("--fd", (-(n * 0.23) % 1).toFixed(2) + "s");
+  }
+  document.querySelectorAll(".bf").forEach(fill);
+  /* ---- contact shortcuts ---- */
+  document.querySelectorAll("[data-wa]").forEach(function(a){
+    if(WHATSAPP_NUMBER){ a.href = "https://wa.me/" + WHATSAPP_NUMBER; a.target = "_blank"; a.rel = "noopener"; }
+  });
+  document.querySelectorAll("[data-book]").forEach(function(a){
+    if(BOOKING_URL){ a.href = BOOKING_URL; a.target = "_blank"; a.rel = "noopener"; }
+  });
+
+  /* ---- language ---- */
+  var LS = "bf-lang";
+  function setLang(l){
+    root.setAttribute("data-lang", l);
+    root.lang = l;
+    try{ localStorage.setItem(LS, l); }catch(e){}
+    document.getElementById("fm").placeholder = l === "en" ? "What do you sell, and what would you like to achieve?" : "Ce vinzi și ce ai vrea să obții?";
+    document.getElementById("fn").placeholder = l === "en" ? "Your name" : "Numele tău";
+  }
+  var saved = null;
+  try{ saved = localStorage.getItem(LS); }catch(e){}
+  setLang(saved === "en" ? "en" : "ro");
+  document.querySelectorAll(".lang button").forEach(function(b){
+    b.addEventListener("click", function(){ setLang(b.getAttribute("data-set")); });
+  });
+
+  /* ---- form ---- */
+  document.getElementById("f").addEventListener("submit", function(ev){
+    ev.preventDefault();
+    var en = root.getAttribute("data-lang") === "en";
+    var nm = document.getElementById("fn").value.trim();
+    var e = document.getElementById("fe").value.trim();
+    var s = document.getElementById("fs");
+    var m = document.getElementById("fm").value.trim();
+    var note = document.getElementById("fnote");
+    if(!nm || !/^\S+@\S+\.\S+$/.test(e)){
+      note.textContent = en ? "Add your name and a valid email address, then try again." : "Completează numele și o adresă de email validă, apoi încearcă din nou.";
+      return;
+    }
+    var subject = (en ? "Quote request: " : "Cerere de ofertă: ") + s.options[s.selectedIndex].text;
+    var body = m + "\n\n— " + nm + " (" + e + ")";
+    window.location.href = "mailto:" + CONTACT_EMAIL + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+  });
+})();
+</script>
+
+</body>
+</html>
